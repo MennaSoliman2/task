@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guest Identification - Guest Inquiry System</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="session-timeout" class="session-timeout hidden">
+    <div class="timeout-card">
+      <div class="timeout-content">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF9800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+          <path d="M12 9v4"></path>
+          <path d="M12 17h.01"></path>
+        </svg>
+        <h2 class="timeout-title" data-translate="session_timeout">Session Timeout Warning</h2>
+        <p class="timeout-message" data-translate="timeout_warning" data-translate-params="countdown">Your session will end in <span id="timeout-countdown">10</span> seconds due to inactivity</p>
+
+        <div class="countdown-circle">
+          <svg viewBox="0 0 100 100" class="countdown-svg">
+            <circle class="countdown-bg" cx="50" cy="50" r="45" fill="none" stroke-width="8"></circle>
+            <circle class="countdown-progress" cx="50" cy="50" r="45" fill="none" stroke-width="8" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="0" transform="rotate(-90 50 50)"></circle>
+          </svg>
+          <div class="countdown-number">
+            <span id="countdown-value">10</span>
+          </div>
+        </div>
+
+        <div class="timeout-buttons">
+          <button id="continue-session" class="btn btn-primary" data-translate="continue_session">Continue Session</button>
+          <button id="end-session" class="btn btn-outline" data-translate="end_session">End Session Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="identify-page">
+    <header class="header">
+      <div class="logo-container">
+        <img src="images/logo.svg" alt="Company Logo" class="logo">
+      </div>
+
+      <h1 class="page-title" data-translate="enter_id">Enter Your ID</h1>
+
+      <button class="btn btn-icon language-toggle" aria-label="Change language">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+          <path d="m5 8 6 6"></path>
+          <path d="m4 14 6-6 2-3"></path>
+          <path d="M2 5h12"></path>
+          <path d="M7 2h1"></path>
+          <path d="m22 22-5-10-5 10"></path>
+          <path d="M14 18h6"></path>
+        </svg>
+      </button>
+    </header>
+
+    <div class="container">
+      <p class="instructions" data-translate="id_instructions">Please enter your National ID, Iqama, or Passport number</p>
+
+      <form id="identify-form" class="identify-form">
+        <div class="tabs">
+          <div class="tabs-list">
+            <button type="button" class="tab-trigger active" data-tab="national_id" data-translate="national_id">National ID</button>
+            <button type="button" class="tab-trigger" data-tab="iqama" data-translate="iqama">Iqama</button>
+            <button type="button" class="tab-trigger" data-tab="passport" data-translate="passport">Passport</button>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <input type="text" id="id-input" class="input" dir="ltr" required>
+          <p id="error-message" class="error-message hidden"></p>
+        </div>
+
+        <div class="virtual-keyboard">
+          <!-- Numbers row 1 -->
+          <button type="button" class="key" data-key="1">1</button>
+          <button type="button" class="key" data-key="2">2</button>
+          <button type="button" class="key" data-key="3">3</button>
+          
+          <!-- Numbers row 2 -->
+          <button type="button" class="key" data-key="4">4</button>
+          <button type="button" class="key" data-key="5">5</button>
+          <button type="button" class="key" data-key="6">6</button>
+          
+          <!-- Numbers row 3 -->
+          <button type="button" class="key" data-key="7">7</button>
+          <button type="button" class="key" data-key="8">8</button>
+          <button type="button" class="key" data-key="9">9</button>
+          
+          <!-- Numbers row 4 -->
+          <button type="button" class="key" data-key="0">0</button>
+          
+          <!-- Letters (hidden by default, shown for passport) -->
+          <div id="letter-keys" class="letter-keys hidden">
+            <button type="button" class="key" data-key="A">A</button>
+            <button type="button" class="key" data-key="B">B</button>
+            <button type="button" class="key" data-key="C">C</button>
+            <button type="button" class="key" data-key="D">D</button>
+            <button type="button" class="key" data-key="E">E</button>
+            <button type="button" class="key" data-key="F">F</button>
+            <button type="button" class="key" data-key="G">G</button>
+            <button type="button" class="key" data-key="H">H</button>
+            <button type="button" class="key" data-key="I">I</button>
+            <button type="button" class="key" data-key="J">J</button>
+            <button type="button" class="key" data-key="K">K</button>
+            <button type="button" class="key" data-key="L">L</button>
+          </div>
+          
+          <!-- Backspace -->
+          <button type="button" class="key key-backspace" data-key="backspace">←</button>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" id="clear-button" class="btn btn-outline" data-translate="clear">Clear</button>
+          <button type="submit" id="search-button" class="btn btn-primary" data-translate="search" disabled>Search</button>
+        </div>
+      </form>
+    </div>
+
+    <footer class="footer">
+      <button class="btn btn-ghost back-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+          <path d="m12 19-7-7 7-7"></path>
+          <path d="M19 12H5"></path>
+        </svg>
+        <span data-translate="back">Back</span>
+      </button>
+
+      <button class="btn btn-ghost help-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+          <path d="M12 17h.01"></path>
+        </svg>
+        <span data-translate="help">Help</span>
+      </button>
+    </footer>
+  </main>
+
+  <script src="js/translations.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/session.js"></script>
+  <script src="js/identify.js"></script>
+</body>
+</html>

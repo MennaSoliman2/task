@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guest Information - Guest Inquiry System</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="session-timeout" class="session-timeout hidden">
+    <!-- Session timeout content (same as in identify.html) -->
+  </div>
+
+  <main class="info-page">
+    <header class="header">
+      <div class="logo-container">
+        <img src="images/logo.svg" alt="Company Logo" class="logo">
+      </div>
+
+      <h1 class="page-title guest-name">Mohammed Abdullah Al-Qahtani</h1>
+
+      <button class="btn btn-icon language-toggle" aria-label="Change language">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+          <path d="m5 8 6 6"></path>
+          <path d="m4 14 6-6 2-3"></path>
+          <path d="M2 5h12"></path>
+          <path d="M7 2h1"></path>
+          <path d="m22 22-5-10-5 10"></path>
+          <path d="M14 18h6"></path>
+        </svg>
+      </button>
+    </header>
+
+    <div class="container">
+      <!-- Personal Information Card -->
+      <div class="card">
+        <div class="card-content">
+          <h2 class="card-title" data-translate="personal_info">Personal Information</h2>
+
+          <div class="info-list">
+            <div class="info-item">
+              <span class="info-label" data-translate="id_type">ID Type:</span>
+              <span class="info-value" id="id-type">National ID</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label" data-translate="id_number">ID Number:</span>
+              <span class="info-value" id="id-number">10XX XX XX XX</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label" data-translate="current_location">Current Location:</span>
+              <span class="info-value" id="current-location">Mina</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accommodation Details Card -->
+      <div class="card">
+        <div class="card-content">
+          <h2 class="card-title" data-translate="accommodation_details">Accommodation Details</h2>
+
+          <div class="tabs">
+            <div class="tabs-list">
+              <button type="button" class="tab-trigger active" data-tab="mina" data-translate="mina">Mina</button>
+              <button type="button" class="tab-trigger" data-tab="arafat" data-translate="arafat">Arafat</button>
+              <button type="button" class="tab-trigger" data-tab="mecca" data-translate="mecca">Mecca</button>
+            </div>
+          </div>
+
+          <div class="tab-content" id="mina-tab">
+            <div class="info-item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#006C35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                <rect x="2" y="2" width="20" height="20" rx="2"></rect>
+                <path d="M15 2v20"></path>
+                <path d="M2 15h20"></path>
+                <path d="M2 9h20"></path>
+                <path d="M9 2v20"></path>
+              </svg>
+              <div>
+                <div class="info-label" data-translate="building">Building/Section</div>
+                <div class="info-value">Building 7, Section A</div>
+              </div>
+            </div>
+
+            <div class="info-item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#006C35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <div>
+                <div class="info-label" data-translate="room_number">Room Number</div>
+                <div class="info-value">A-203</div>
+              </div>
+            </div>
+
+            <div class="info-item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#006C35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <div>
+                <div class="info-label" data-translate="bed_number">Bed Number</div>
+                <div class="info-value">5</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content hidden" id="arafat-tab">
+            <!-- Arafat accommodation details (similar structure to mina-tab) -->
+          </div>
+
+          <div class="tab-content hidden" id="mecca-tab">
+            <!-- Mecca accommodation details (similar structure to mina-tab) -->
+          </div>
+
+          <div class="card-actions">
+            <button class="btn btn-outline">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                <path d="M7 7h.01"></path>
+                <path d="M17 7h.01"></path>
+                <path d="M7 17h.01"></path>
+                <path d="M17 17h.01"></path>
+              </svg>
+              <span data-translate="show_qr">Show QR</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Guide Information Card -->
+      <div class="card">
+        <div class="card-content">
+          <h2 class="card-title" data-translate="guide_info">Guide Information</h2>
+
+          <div class="guide-info">
+            <div class="guide-photo">
+              <img src="images/guide-placeholder.svg" alt="Guide" class="guide-img">
+            </div>
+
+            <div class="guide-details">
+              <div>
+                <div class="info-label" data-translate="guide_name">Guide's Name</div>
+                <div class="info-value guide-name">Ahmed Hassan</div>
+              </div>
+
+              <div>
+                <div class="info-label" data-translate="contact_info">Contact Information</div>
+                <div class="info-value guide-contact">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                  <span>+966 50 123 4567</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <button class="btn btn-ghost back-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+          <path d="m12 19-7-7 7-7"></path>
+          <path d="M19 12H5"></path>
+        </svg>
+        <span data-translate="back">Back</span>
+      </button>
+
+      <div class="footer-actions">
+        <button class="btn btn-outline help-request-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <path d="M12 17h.01"></path>
+          </svg>
+          <span data-translate="help_request">Request Help</span>
+        </button>
+
+        <button class="btn btn-outline rate-service-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <span data-translate="rate_service">Rate Service</span>
+        </button>
+      </div>
+    </footer>
+  </main>
+
+  <script src="js/translations.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/session.js"></script>
+  <script src="js/info.js"></script>
+</body>
+</html>
